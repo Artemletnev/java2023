@@ -2,54 +2,57 @@ package lesson1_1;
 
 public class FirstApp {
     public static void main(String[] args) {
-        System.out.println("Hellow, world");
+        System.out.println("Task 1");
+        printThreeWords();
+        System.out.println("----------------");
+        System.out.println("Task 2");
+        checkSumSing();
+        System.out.println("----------------");
+        System.out.println("Task 3");
+        printColor();
+        System.out.println("----------------");
+        System.out.println("Task 4");
+        compareNumbers();
 
-        int name = 10;
 
-        float val = 10;
-        double valie = 1.0;
-
-        int b = 100 + name;
-        System.out.println("b = " + b + " ss");
-
-        int c = (name + b) * 2;
-        System.out.println("c = " + c);
-
-        int a = 42;
-        a++;
-        System.out.println("a = " + a);
-        a--;
-        System.out.println("a = " + a);
-        a += 10;
-        System.out.println("a = " + a);
-        a -= 10;
-        System.out.println("a = " + a);
-        a *= 10;
-        System.out.println("a = " + a);
-        a /= 10;
-        System.out.println("a = " + a);
-
-        boolean boolValue = true;
-        System.out.println(boolValue);
-        int v1 = 177;
-        int v2 = 15;
-
-        boolean result = v1 > v2;
-        System.out.println(result);
-
-        if (result) {
-            System.out.println("v1 > v2");
-        } else if (v1 < v2) {
-            System.out.println("v1 < v2");
-
+    }
+    public static void compareNumbers(){
+        int a = 11123213;
+        int b = 123;
+        if(a>=b){
+            System.out.println("a >= b");
         } else {
-            System.out.println("v1 = v2");
+            System.out.println("a < b");
         }
-        drawCat();
-        drawCat();
-        drawCat();
+    }
 
+    public static void printColor() {
+        int value = 123;
+        if (value <= 0) {
+            System.out.println("Red");
+        } else if (value>0 & value<=100) {
+            System.out.println("Yellow");
+            
+        } else {
+            System.out.println("Green");
+        }
+    }
 
+    public static void checkSumSing() {
+        int a = 4;
+        int b = 7;
+        if (a + b >= 0) {
+            System.out.println("Plus");
+        } else {
+            System.out.println("not plus");
+        }
+
+    }
+
+    public static void printThreeWords() {
+        System.out.println("Orange");
+        System.out.println("Banana");
+        System.out.println("Apple");
     }
 
     public static void drawCat() {
