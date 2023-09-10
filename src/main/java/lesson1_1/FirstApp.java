@@ -88,4 +88,5 @@ public class FirstApp {
 
     // Символьный
     // char(ASCII/Unicod)
+    // test
 }
