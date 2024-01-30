@@ -1,4 +1,4 @@
-package Lesson2_2;
+package Lesson1_2;
 
 public class SwitchApp {
     public static void main(String[] args) {
