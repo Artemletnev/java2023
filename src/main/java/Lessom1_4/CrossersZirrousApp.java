@@ -68,8 +68,9 @@ public class CrossersZirrousApp {
     public static void humaTurn() {
         int x, y;
         do {
-            System.out.println("Введите координаты в формате X Y");
+            System.out.println("Введите координаты в формате X ");
             x = SCANNER.nextInt() - 1;
+            System.out.println(" Введите Y");
             y = SCANNER.nextInt() - 1;
 
         } while (!isCellValid(x, y));
