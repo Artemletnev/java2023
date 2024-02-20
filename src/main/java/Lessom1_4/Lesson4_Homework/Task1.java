@@ -27,6 +27,7 @@ public class Task1 {
     //Сканнер написанного человеком
 
     public static final Scanner SCANNER = new Scanner(System.in);
+    public static final int POTENCIALWIN = 2;
 
     //Рандомное число для робота
 
@@ -74,6 +75,7 @@ public class Task1 {
             y = SCANNER.nextInt() - 1;
         } while (!checkNumber(x, y));
         place[y][x] = HUMAN_DOTS;
+        System.out.println("y=" + (y + 1) + " " + "x=" + (x + 1));
 
     }
 
@@ -82,54 +84,427 @@ public class Task1 {
         if (x < 0 || x >= PLACESIZE || y < 0 || y >= PLACESIZE) {
             return false;
         }
-        if (place[x][y] != ZAPOLNENO) {
+        if (place[y][x] != ZAPOLNENO) {
             return false;
 
         }
         return true;
     }
-    // Метод хода робота
 
-    public static void aiTurn() {
+    // Метод хода робота
+    //y= i
+    //x= j
+    public static boolean horizontalCHekPotencialWin() {
+        int count = 0;
+        for (int i = 0; i < place.length; i++) {
+            count = 0;
+            for (int j = 0; j < place[i].length; j++) {
+                if (place[i][j] == HUMAN_DOTS) {
+                    count++;
+                    if (count == POTENCIALWIN) {
+                        for (int k = 0; k < place.length; k++) {
+                            if (place[i][k] == ZAPOLNENO) {
+                                place[i][k] = ROBOT_DOTS;
+                                return true;
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+        return false;
+
+    }
+
+    public static boolean vertikalCheckPotencialWin() {
+        int count = 0;
+        for (int i = 0; i < place.length; i++) {
+            count = 0;
+            for (int j = 0; j < place[i].length; j++) {
+                if (place[j][i] == HUMAN_DOTS) {
+                    count++;
+                    if (count == POTENCIALWIN) {
+                        for (int k = 0; k < place.length; k++) {
+                            if (place[k][i] == ZAPOLNENO) {
+                                place[k][i] = ROBOT_DOTS;
+                                return true;
+                            }
+                        }
+
+
+                    }
+                }
+            }
+        }
+        return false;
+
+    }
+
+    public static boolean diagonalCheckPotencialWin() {
+        int count = 0;
+        for (int i = 0; i < place.length; i++) {
+            for (int j = 0; j < place[i].length; j++) {
+                if (i == j) {
+                    if (place[i][j] == HUMAN_DOTS) {
+                        count++;
+                        if (count == POTENCIALWIN) {
+                            for (int k = 0; k < place.length; k++) {
+                                if (place[k][k] == ZAPOLNENO) {
+                                    place[k][k] = ROBOT_DOTS;
+                                    return true;
+                                }
+                            }
+
+                        }
+                    }
+
+                }
+
+            }
+        }
+        return false;
+    }
+
+    public static boolean reverseDiagonalCheckPotencialWin() {
+        int count = 0;
+        int iSegment = 0;
+        int jSegment = place.length - 1;
+        for (int i = 0; i < place.length; i++) {
+            for (int j = 0; j < place[i].length; j++) {
+                if (i == iSegment && j == jSegment) {
+                    iSegment++;
+                    jSegment--;
+                    if (place[i][j] == HUMAN_DOTS) {
+                        count++;
+                        if (count == POTENCIALWIN) {
+                            iSegment = 0;
+                            jSegment = place.length - 1;
+                            for (int k = 0; k < place.length; k++) {
+                                for (int l = 0; l < place[k].length; l++) {
+                                    if (place[iSegment][jSegment] == ZAPOLNENO) {
+                                        place[iSegment][jSegment] = ROBOT_DOTS;
+                                        return true;
+
+                                    }
+                                    iSegment++;
+                                    jSegment--;
+
+                                }
+
+                            }
+
+                        }
+                    }
+                }
+
+
+            }
+        }
+        return false;
+    }
+
+    public static boolean firstRobotTurn() {
+
+        for (int i = 0; i < place.length; i++) {
+            for (int j = 0; j < place[i].length; j++) {
+                if (place[i][j] == HUMAN_DOTS) {
+                    if (i + 1 <= place.length - 1) {
+                        if (place[i + 1][j] == ZAPOLNENO) {
+                            place[i + 1][j] = ROBOT_DOTS;
+                            return true;
+                        }
+                        if (j + 1 <= place.length - 1) {
+                            if (place[i + 1][j + 1] == ZAPOLNENO) {
+                                place[i + 1][j + 1] = ROBOT_DOTS;
+                                return true;
+                            }
+
+                        }
+                        if (j - 1 >= 0) {
+                            if (place[i + 1][j - 1] == ZAPOLNENO) {
+                                place[i + 1][j - 1] = ROBOT_DOTS;
+                                return true;
+                            }
+                        }
+
+
+                    }
+                    if (i - 1 >= 0) {
+                        if (place[i - 1][j] == ZAPOLNENO) {
+                            place[i - 1][j] = ROBOT_DOTS;
+                            return true;
+
+                        }
+                        if (j + 1 <= place.length - 1) {
+                            if (place[i - 1][j + 1] == ZAPOLNENO) {
+                                place[i - 1][j + 1] = ROBOT_DOTS;
+                                return true;
+
+                            }
+                        }
+                        if (j - 1 >= 0) {
+                            if (place[i - 1][j - 1] == ZAPOLNENO) {
+                                place[i - 1][j - 1] = ROBOT_DOTS;
+                                return true;
+
+                            }
+                        }
+                    }
+
+                }
+
+            }
+        }
+
+
+
+
+        return false;
+
+    }
+
+    public static boolean randomRobotTurn() {
         int x, y;
         do {
-            x = RANDOM.nextInt(PLACESIZE) ;
+            x = RANDOM.nextInt(PLACESIZE);
             y = RANDOM.nextInt(PLACESIZE);
         } while (!checkNumber(x, y));
         System.out.println("HOD ROBOTA V y= " + (y + 1) + "  x= " + (x + 1));
         place[y][x] = ROBOT_DOTS;
+        return true;
+
+    }
+
+    public static void aiTurn() {
+        if (horizontalCHekPotencialWin()) return;
+        if (vertikalCheckPotencialWin()) return;
+        if (diagonalCheckPotencialWin()) return;
+        if (reverseDiagonalCheckPotencialWin()) return;
+        if (firstRobotTurn()) return;
+        //if (randomRobotTurn()) return;
+
+
+//        int x, y;
+//        do {
+//            x = RANDOM.nextInt(PLACESIZE);
+//            y = RANDOM.nextInt(PLACESIZE);
+//        } while (!checkNumber(x, y));
+//        System.out.println("HOD ROBOTA V y= " + (y + 1) + "  x= " + (x + 1));
+//        place[y][x] = ROBOT_DOTS;
 
 
     }
 
     //Метод определения победы
     public static boolean checkWinMoment(char symbol) {
-        if (place[0][0] == symbol && place[0][1] == symbol && place[0][2] == symbol) {
+        if (horizontalCheck(symbol)) {
             return true;
         }
-        if (place[0][0] == symbol && place[1][0] == symbol && place[2][0] == symbol) {
+        if (vertikalCheck(symbol)) {
             return true;
         }
-        if (place[0][0] == symbol && place[1][1] == symbol && place[2][2] == symbol) {
+        if (diagonalChek(symbol)) {
             return true;
         }
-        if (place[0][2] == symbol && place[1][1] == symbol && place[2][0] == symbol) {
+        if (reverseDiagonalCheck(symbol)) {
             return true;
         }
-        if (place[1][0] == symbol && place[1][1] == symbol && place[1][2] == symbol) {
+        if (upperDiagonalCheck(symbol)) {
             return true;
         }
-        if (place[2][0] == symbol && place[2][1] == symbol && place[2][2] == symbol) {
+        if (loverDiagonalCheck(symbol)) {
             return true;
         }
-        if (place[0][1] == symbol && place[1][1] == symbol && place[2][1] == symbol) {
+        if (lowerReverseDiagonalCheck(symbol)) {
             return true;
         }
-        if (place[0][2] == symbol && place[1][2] == symbol && place[2][2] == symbol) {
+        if (upperReverseDiagonalCheck(symbol)) {
             return true;
+        }
+
+
+        return false;
+    }
+
+    //Метод проверки горизонтали
+    public static boolean horizontalCheck(char symbol) {
+        int count = 0;
+        for (int i = 0; i < place.length; i++) {
+            count = 0;
+            for (int j = 0; j < place[i].length; j++) {
+                if (place[i][j] == symbol) {
+                    count++;
+
+                    if (count == WIN) {
+                        return true;
+                    }
+
+                }
+                if (place[i][j] != symbol) {
+                    count = 0;
+                }
+
+
+            }
+        }
+        return false;
+
+
+    }
+    //Метод проверки вертикали
+
+    public static boolean vertikalCheck(char symbol) {
+        int count = 0;
+        for (int i = 0; i < place.length; i++) {
+            count = 0;
+            for (int j = 0; j < place[i].length; j++) {
+                if (place[j][i] == symbol) {
+                    count++;
+
+                    if (count == WIN) {
+                        return true;
+                    }
+                }
+
+            }
+        }
+        return false;
+
+    }
+    // Метод проверки диагонали
+
+    public static boolean diagonalChek(char symbol) {
+        int count = 0;
+        for (int i = 0; i < place.length; i++) {
+            for (int j = 0; j < place[i].length; j++) {
+                if (i == j) {
+                    if (place[i][j] == symbol) {
+                        count++;
+
+                        if (count == WIN) {
+                            return true;
+                        }
+                    }
+                }
+
+            }
+        }
+        return false;
+
+    }
+    //Метод проверки обратной диагонали
+
+
+    public static boolean reverseDiagonalCheck(char symbol) {
+        int count = 0;
+        int iSegment = 0;
+        int jSegment = place.length - 1;
+
+        for (int i = 0; i < place.length; i++) {
+            for (int j = 0; j < place[i].length; j++) {
+                if (i == iSegment && j == jSegment) {
+                    iSegment++;
+                    jSegment--;
+                    if (place[i][j] == symbol) {
+                        count++;
+                        if (count == WIN) {
+                            return true;
+                        }
+                    }
+                }
+
+            }
         }
         return false;
     }
+
+    public static boolean lowerReverseDiagonalCheck(char symbol) {
+        int count = 0;
+        int iSegment = 1;
+        int jSegment = place.length - 1;
+
+        for (int i = 0; i < place.length; i++) {
+            for (int j = 0; j < place[i].length; j++) {
+                if (i == iSegment && j == jSegment) {
+                    iSegment++;
+                    jSegment--;
+                    if (place[i][j] == symbol) {
+                        count++;
+                        if (count == WIN) {
+                            return true;
+                        }
+                    }
+                }
+
+            }
+        }
+        return false;
+
+    }
+
+    public static boolean upperReverseDiagonalCheck(char symbol) {
+        int count = 0;
+        int iSegment = 0;
+        int jSegment = place.length - 2;
+        for (int i = 0; i < place.length; i++) {
+            for (int j = 0; j < place[i].length; j++) {
+                if (i == iSegment && j == jSegment) {
+                    iSegment++;
+                    jSegment--;
+                    if (place[i][j] == symbol) {
+                        count++;
+                        if (count == WIN) {
+                            return true;
+                        }
+                    }
+                }
+
+            }
+        }
+        return false;
+    }
+
+    //Метод для проверки верхней от центра диагонали
+    public static boolean upperDiagonalCheck(char symbol) {
+        int count = 0;
+        for (int i = 0; i < place.length; i++) {
+            for (int j = 0; j < place[i].length; j++) {
+                if (j > i && j < i + 2)
+                    if (place[i][j] == symbol) {
+                        count++;
+
+                        if (count == WIN) {
+                            return true;
+                        }
+                    }
+
+
+            }
+        }
+        return false;
+    }
+
+    //Метод для проверки нижней от центра диагонали
+    public static boolean loverDiagonalCheck(char symbol) {
+        int count = 0;
+        for (int i = 0; i < place.length; i++) {
+            for (int j = 0; j < place[i].length; j++) {
+                if (i > j && j > (i - 2)) {
+                    if (place[i][j] == symbol) {
+                        count++;
+                        if (count == WIN) {
+                            return true;
+                        }
+
+                    }
+
+                }
+            }
+        }
+        return false;
+    }
+
 
     //Метод проверки того, что на карте есть свободное место
 
