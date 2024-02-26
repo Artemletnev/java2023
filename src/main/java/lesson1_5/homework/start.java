@@ -13,7 +13,7 @@ public class start {
         System.out.println();
 
         for (int i = 0; i < array.length; i++) {
-            if (array[i].getAge() > 2) {
+            if (array[i].getAge() > 25) {
                 array[i].subjecktInformation();
 
             }
