@@ -9,7 +9,7 @@ public class StartApp {
         dog.swim(5);
         dog.run(222);
 
-        Cat [] cats = new Cat{cat};
+
 
 
 
