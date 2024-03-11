@@ -32,7 +32,16 @@ public class Car extends Transport {
         return model + " " + year;
     }
 
-    void info(){
+    void info() {
         System.out.println(this);
     }
+
+    @Override
+    public void wroomWroom() {
+        System.out.println("Wroom");
+
+
+    }
+
+
 }

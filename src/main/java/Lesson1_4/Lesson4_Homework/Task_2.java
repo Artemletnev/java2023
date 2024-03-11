@@ -1,4 +1,4 @@
-package Lessom1_4.Lesson4_Homework;
+package Lesson1_4.Lesson4_Homework;
 
 public class Task_2 {
 //    public static boolean checkWinMoment(char symbol) {

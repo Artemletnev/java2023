@@ -1,6 +1,5 @@
-package Lessom1_4.Lesson4_Homework;
+package Lesson1_4.Lesson4_Homework;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
