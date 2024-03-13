@@ -2,7 +2,7 @@ package lesson1_6.Homework;
 
 public class StartApp {
     public static void main(String[] args) {
-        Cat cat = new Cat("Ray", 3,"sheepdog");
+        Cat cat = new Cat("Ray", "sheepdog");
         cat.swim(3);
         cat.run(90);
         Dog dog = new Dog("Ray",3,"sheepdog");
