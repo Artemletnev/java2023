@@ -6,15 +6,12 @@ public class Animals {
     protected String name;
     protected int maxRun;
     protected int maxSwim;
-    protected int age;
     protected String breed;
-    public int catCount;
-    public int dogCount;
-    private int allAnimalsCount;
 
-    public Animals(String name, int age, String breed) {
+
+    public Animals(String name,  String breed) {
         this.name = name;
-        this.age = age;
+
         this.breed = breed;
     }
 
@@ -44,11 +41,6 @@ public class Animals {
         System.out.println("The animal run " + n + " metr!");
 
     }
-    public void printCounts(){
-        System.out.println(catCount);
-        System.out.println(dogCount);
-        allAnimalsCount = catCount +dogCount;
-        System.out.println(allAnimalsCount);
-    }
+
 
 }
