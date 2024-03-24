@@ -7,7 +7,9 @@ public class App {
         CAt cat3 = new CAt("Hruno", 123);
         CAt cat4 = new CAt("Vivi", 1200);
         Plate plate1 = new Plate(1000);
-        Warehouse warehouse = new Warehouse(10000000);
+        Plate plate2 = new Plate(1300);
+        Warehouse warehouse = new Warehouse(50);
+        warehouse.info();
 
 
 
@@ -20,8 +22,10 @@ public class App {
         }
         plate1.info();
 
-        plate1.addFood(warehouse.getStocks());
+        plate1.addFood(warehouse);
+        warehouse.info();
         plate1.info();
+
 
 
     }

@@ -11,9 +11,13 @@ public class Warehouse {
         return stocks;
     }
 
-    public void addToFull(int n) {
-        n = stocks - n;
-
-
+    public void setStocks(int stocks) {
+        this.stocks = stocks;
     }
+
+    public void info() {
+        System.out.println("В данном хранилище осталось = " + stocks);
+    }
+
+
 }
