@@ -94,12 +94,7 @@ public class WindowApp extends JFrame {
         });
 
 
-//        JButton incrementButtonUP = new JButton(">>");
-//        JButton decrementButtonDown = new JButton("<<");
-//        incrementButtonUP.setFont(font);
-//        decrementButtonDown.setFont(font);
-//        add(incrementButtonUP,BorderLayout.EAST);
-//        add(decrementButtonDown, BorderLayout.AFTER_LAST_LINE);
+
 
 
         setVisible(true);
@@ -116,6 +111,8 @@ public class WindowApp extends JFrame {
             }
 
 
+        } else {
+            labelTwo.setText("");
         }
 
 
