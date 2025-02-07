@@ -17,26 +17,7 @@ public class Human extends Team{
         this.canRun = true;
         this.name = name;
     }
-    @Override
-    void run(){
-        if(canRun){
-            System.out.println("The human " + name + " " + "is running");
-        }
-        else {
-            System.out.println("The cant running");
-        }
 
-    }
-    @Override
-    void jump(){
-        if(canJump){
-            System.out.println("The human " + name + " " + "is jump");
-        }
-        else {
-            System.out.println("The cant jump");
-        }
-
-    }
 
     public int getMaxDistance() {
         return maxDistance;
@@ -61,4 +42,6 @@ public class Human extends Team{
     public String getName() {
         return name;
     }
+
+
 }
