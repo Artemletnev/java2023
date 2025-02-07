@@ -33,6 +33,13 @@ public class Main {
         Course[] courses = {new Wall(15), new Treadmill(150), new Treadmill(100), new Wall(5)};
 
 
+        //team[1].run(courses[1]);
+
+
+
+
+
+
 
 
 

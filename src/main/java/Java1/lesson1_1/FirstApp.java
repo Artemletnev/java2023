@@ -74,11 +74,6 @@ public class FirstApp {
 
 
 
-
-
-
-
-
     }
 
     // 2 типа данных

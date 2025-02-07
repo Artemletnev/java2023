@@ -8,22 +8,7 @@ public class Wall extends Course {
         this.hight = hight;
     }
 
-    void catJump(Cat cat){
-        if(hight> cat.getMaxHight()){
-            System.out.println("Cat " + cat.getName()+ " cant do this!");
-        }
-        else {
-            cat.jump();
-        }
+    public int getHight() {
+        return hight;
     }
-    void humanJump(Human human){
-        if(hight> human.getMaxHight()){
-            System.out.println("Human " + human.getName()+ " cant do this!");
-        }
-        else {
-            human.jump();
-        }
-    }
-
-
 }

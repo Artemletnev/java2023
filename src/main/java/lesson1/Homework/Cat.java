@@ -17,36 +17,7 @@ public class Cat extends Team{
         this.canRun = true;
         this.name = name;
     }
-@Override
-    void run(){
-        if(canRun){
-            System.out.println("The cat " + name + " " + "is running");
-        }
-        else {
-            System.out.println("The cant running");
-        }
 
-    }
-    @Override
-    void jump(){
-        if(canJump){
-            System.out.println("The cat " + name + " " + "is jump");
-        }
-        else {
-            System.out.println("The cant jump");
-        }
-
-    }
-
-    @Override
-    void swim() {
-        if (canSwim){
-            System.out.println("The cat " + name + " " + "is swiming");
-        }
-        else {
-            System.out.println("Cant swim");
-        }
-    }
 
     public int getMaxDistance() {
         return maxDistance;
