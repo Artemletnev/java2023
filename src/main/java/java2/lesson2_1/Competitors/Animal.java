@@ -1,6 +1,6 @@
-package java2.lesson2_1;
+package java2.lesson2_1.Competitors;
 
-public class Animal implements Competitor{
+public class Animal implements Competitor {
     String type;
     String name;
 
@@ -56,6 +56,6 @@ public class Animal implements Competitor{
 
     @Override
     public void info() {
-        System.out.println(type + " " + name + " " + onDistance);
+        System.out.println(type + " " + name +": " + onDistance);
     }
 }
