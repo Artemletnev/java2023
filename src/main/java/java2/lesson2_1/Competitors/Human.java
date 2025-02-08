@@ -1,6 +1,8 @@
-package java2.lesson2_1;
+package java2.lesson2_1.Competitors;
 
-public class Human implements Competitor{
+import java2.lesson2_1.Competitors.Competitor;
+
+public class Human implements Competitor {
     String name;
     int maxRunDistance;
     int maxSwimDisance;
@@ -55,7 +57,7 @@ public class Human implements Competitor{
 
     @Override
     public void info() {
-        System.out.println(name + " " + active);
+        System.out.println(name + ": " + active);
 
     }
 }

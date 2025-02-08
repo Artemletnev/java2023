@@ -1,6 +1,9 @@
-package java2.lesson2_1;
+package java2.lesson2_1.Obstacle;
 
-public class Wall extends Obstacle{
+import java2.lesson2_1.Competitors.Competitor;
+import java2.lesson2_1.Obstacle.Obstacle;
+
+public class Wall extends Obstacle {
     int height;
 
     public Wall(int height) {
