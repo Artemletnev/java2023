@@ -4,25 +4,21 @@ import java2.lesson2_1.Competitors.Competitor;
 import java2.lesson2_1.Competitors.Team;
 
 public class Course {
-    Obstacle[] obstacle;
+    private Obstacle[] obstacles;
 
 
-    public Course(Obstacle[] obstacle) {
-        this.obstacle = obstacle;
+    public Course(Obstacle... obstacles) {
+        this.obstacles = obstacles;
     }
 
 
+
     public void doIT(Team team){
-        Competitor[] teammeMembers = team.getTeamMembers();
-        if (teammeMembers.length>0){
-            for (Competitor competitor : teammeMembers){
-                for (Obstacle obstacle1 : obstacle){
-                    obstacle1.doIT(competitor);
-                    if (!competitor.isOnDistant())break;
-                }
+        for (Competitor competitor : team.getTeams()){
+            for (Obstacle obstacle : obstacles){
+                obstacle.doIT(competitor);
+                if (!competitor.isOnDistant())break;
             }
-        } else {
-            System.out.println("There are no members in the team!");
         }
     }
 }
