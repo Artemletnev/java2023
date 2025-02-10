@@ -1,33 +1,26 @@
 package java2.lesson2_1.Competitors;
 
 public class Team {
-    String teamName;
-    Competitor[] teamMembers = new Competitor[4];
+    private String nameTeam;
 
+    private Competitor[] teams;
 
-    public Team(String teamName, Competitor[] teamMembers) {
-        this.teamName = teamName;
-        this.teamMembers = teamMembers;
+    public Competitor[] getTeams() {
+        return teams;
     }
 
-    public String getTeamName() {
-        return teamName;
+    public Team(String nameTeam, Competitor... teams) {
+        this.nameTeam = nameTeam;
+        this.teams = teams;
     }
-
-    public Competitor[] getTeamMembers() {
-        return teamMembers;
-    }
-
-    public void showResults(){
-        for (Competitor competitor: teamMembers){
-            competitor.info();
+    public void showWinners(){
+        for (Competitor c : teams){
+            if (!c.isOnDistant()){
+                c.info();
+            }
         }
     }
-    public void showMembersFinishedCourse(){
-        for (Competitor competitor: teamMembers){
-            if(competitor.isOnDistant())
-                competitor.info();
-        }
-    }
+
+
 
 }

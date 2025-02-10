@@ -17,19 +17,13 @@ public class Main {
 //        for (Competitor c :competitors){
 //            c.info();
 //        }
-        Competitor[] competitors = {new Human("BOB"), new Cat("Bars"), new Dog("Ray")};
-        Obstacle[] obstacles = {new Cross(400), new Water(1), new Wall(2)};
-
-        Team team = new Team("Winners", competitors);
-        System.out.println("Create new team");
-        System.out.println(team.getTeamName());
-        System.out.println("TEam members:");
-        team.showResults();
-
-        Course course = new Course(obstacles);
+        Team team = new Team("Winners", new Cat("Bars"), new Dog("Ray"), new Human("Artem"), new Human("Nataly"));
+        Course course = new Course(new Cross(80), new Wall(2), new Wall(1), new Water(7));
         course.doIT(team);
-        team.showResults();
-        team.showMembersFinishedCourse();
+        team.showWinners();
+
+
+
 
 
 
