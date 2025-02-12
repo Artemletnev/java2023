@@ -39,7 +39,7 @@ public class MainEX {
 //        }
 //        System.out.println("ss");
         try {
-            int res = Factorial.getFactorial(-10);
+            int res = Factorial.getFactorial(3);
             System.out.println(res);
         }catch (FactorialException e){
             e.printStackTrace();
