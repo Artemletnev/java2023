@@ -8,24 +8,6 @@ public class main {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         try {
             Array.checkTrue(array);
             Array.sumNumbers(array);
